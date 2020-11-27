@@ -68,6 +68,13 @@ public class Users {
 		this.role = role;
 	}
 
+	//username and password constructor.
+	public Users(String username, String password) {
+		super();
+		this.username = username;
+		setPassword(password);
+	}
+
 	public int getUserId() {
 		return userId;
 	}
