@@ -8,8 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.revature.util.Hasher;
 
 @Entity
 @Table(name="Users")
@@ -24,7 +25,7 @@ public class Users {
 	private String username;
 	
 	@Column(name="password_hash", nullable=false)
-	private String password;	//TODO this needs to be hashed. Make a hash class in .util package.
+	private String password;
 	
 	@Column(name="first_name", nullable=false)
 	private String firstName;
@@ -45,7 +46,8 @@ public class Users {
 	public Users(String username, String password, String firstName, String lastName, String email, Role role) {
 		super();
 		this.username = username;
-		this.password = password;
+		//Encrypt the password.
+		setPassword(password);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -58,7 +60,8 @@ public class Users {
 		super();
 		this.userId = userId;
 		this.username = username;
-		this.password = password;
+		//Encrypt the password.
+		setPassword(password);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -85,8 +88,11 @@ public class Users {
 		return password;
 	}
 
+	
+	//Make sure to encrypt the password upon setting it.
 	public void setPassword(String password) {
-		this.password = password;
+		String hashedPass = new Hasher(password).getHashed();
+		this.password = hashedPass;
 	}
 
 	public String getFirstName() {

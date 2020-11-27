@@ -42,7 +42,7 @@ public class Reimbursement {
 
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="Status_FK")
-	private ReimbursmentStatus status;
+	private ReimbursementStatus status;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="Type_FK")
@@ -53,7 +53,7 @@ public class Reimbursement {
 	}
 
 	public Reimbursement(double amount, String submitted, String resolved, String description, Users author,
-			Users resolver, ReimbursmentStatus status, ReimbursementType type) {
+			Users resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.amount = amount;
 		this.submitted = submitted;
@@ -67,7 +67,7 @@ public class Reimbursement {
 
 	
 	public Reimbursement(int reimbursmentId, double amount, String submitted, String resolved, String description,
-			Users author, Users resolver, ReimbursmentStatus status, ReimbursementType type) {
+			Users author, Users resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.reimbursmentId = reimbursmentId;
 		this.amount = amount;
@@ -136,11 +136,11 @@ public class Reimbursement {
 		this.resolver = resolver;
 	}
 
-	public ReimbursmentStatus getStatus() {
+	public ReimbursementStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(ReimbursmentStatus status) {
+	public void setStatus(ReimbursementStatus status) {
 		this.status = status;
 	}
 
@@ -150,10 +150,6 @@ public class Reimbursement {
 
 	public void setType(ReimbursementType type) {
 		this.type = type;
-	}
-	
-	
-	
-	
+	}	
 	
 }

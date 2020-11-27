@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="reimbursement_status")
-public class ReimbursmentStatus {
+public class ReimbursementStatus {
 	
 	@Id
 	@Column(name="status_id")
@@ -25,9 +25,9 @@ public class ReimbursmentStatus {
 	@OneToMany(mappedBy="status", fetch=FetchType.LAZY)
 	private Reimbursement reimburse;
 	
-	public ReimbursmentStatus() {}
+	public ReimbursementStatus() {}
 
-	public ReimbursmentStatus(int statusId, String statusName) {
+	public ReimbursementStatus(int statusId, String statusName) {
 		super();
 		this.statusId = statusId;
 		this.statusName = statusName;
