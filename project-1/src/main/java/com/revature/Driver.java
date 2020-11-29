@@ -33,10 +33,15 @@ public class Driver {
 		u1 = ud.selectById(4);
 		
 		List<Reimbursement> pending = new ArrayList<>();
-		pending = rd.selectPending(u1.getUserId());
+		pending = rd.selectRequests(2, u1.getUserId());
+		
+		if(pending == null) {
+			System.out.println("\nNo requests found.\n");
+			return;
+		}
 		
 		for(Reimbursement r : pending) {
-			System.out.println(r.toString());
+			System.out.println("\n"+r.toString()+"\n");
 		}
 		
 	}
