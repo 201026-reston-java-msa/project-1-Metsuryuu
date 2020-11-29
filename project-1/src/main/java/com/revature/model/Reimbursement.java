@@ -35,7 +35,7 @@ public class Reimbursement {
 	private String description;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="User_FK_Author")
+	@JoinColumn(name="User_FK_Author", referencedColumnName="user_id")
 	private Users author;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -43,11 +43,11 @@ public class Reimbursement {
 	private Users resolver;	//I believe these are who makes and approves the request.
 
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="Status_FK")
+	@JoinColumn(name="Status_FK", referencedColumnName="status_id")
 	private ReimbursementStatus status;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="Type_FK")
+	@JoinColumn(name="Type_FK", referencedColumnName="type_id")
 	private ReimbursementType type;
 	
 	public Reimbursement() {
