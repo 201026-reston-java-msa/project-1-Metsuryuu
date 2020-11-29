@@ -24,5 +24,15 @@ public class UserDao {
 		session.update(user);
 		tx.commit();
 	}
+	
+	public Users selectById(int id) {
+		
+		Session session = HibernateUtil.getSession();
+		
+		Users user = session.get(Users.class, id);
+		
+		return user;
+		
+	}
 
 }

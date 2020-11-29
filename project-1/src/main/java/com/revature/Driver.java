@@ -1,5 +1,8 @@
 package com.revature;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.UserDao;
 import com.revature.model.Reimbursement;
@@ -12,11 +15,30 @@ import com.revature.utilities.HibernateUtil;
 public class Driver {
 
 	public static void main(String[] args) {
-		initialValues();
+//		initialValues();
+		selectTest();
 		
 		HibernateUtil.closeSession();
 		System.out.println("Really done.");
 
+	}
+
+	private static void selectTest() {
+		
+		UserDao ud = new UserDao();
+		ReimbursementDao rd = new ReimbursementDao();
+		
+		Users u1 = new Users();
+		
+		u1 = ud.selectById(4);
+		
+		List<Reimbursement> pending = new ArrayList<>();
+		pending = rd.selectPending(u1.getUserId());
+		
+		for(Reimbursement r : pending) {
+			System.out.println(r.toString());
+		}
+		
 	}
 
 	private static void initialValues() {
@@ -31,7 +53,7 @@ public class Driver {
 //		ud.insert(u2);
 		
 		Users u1 = new Users();
-		u1.setUserId(4);	//TODO left off here, still having issues with duplicate user.
+		u1.setUserId(4);	
 		
 		ReimbursementStatus rs = new ReimbursementStatus(1, "Pending");
 		ReimbursementType rt = new ReimbursementType(3, "Food");
