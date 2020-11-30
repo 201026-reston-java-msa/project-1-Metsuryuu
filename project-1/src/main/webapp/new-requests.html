@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>404</title>
+    <title>New Requests</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -230,14 +230,43 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- 404 Error Text -->
-                    <div class="text-center">
-                        <div class="error mx-auto" data-text="404">404</div>
-                        <p class="lead text-gray-800 mb-5">Page Not Found</p>
-                        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="index.html">&larr; Back to Dashboard</a>
-                    </div>
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-1 text-gray-800">Submit a New Request</h1>
+                    <p class="mb-4">Please fill out the form below and click <a href="">Submit</a>
+                                    to send the form.</p>
 
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- First Column -->
+                        <div class="col-lg-10">
+
+                            <!-- Custom Text Color Utilities -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Fill out the form below</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form name="requestForm" method="post" action="requestServlet">
+                                        Fill in the amount you are requesting to be reimbursed:<br>
+                                        <input type="number" name="amount" min="0.01" step="0.01" placeholder="Amount"/><br><br>
+                                        Select the type of expense:
+                                        <select class="form-control" name="type">
+                                            <option value="" disabled selected>Select type of expense</option>
+                                            <option value="1">Lodging</option>
+                                            <option value="2">Travel</option>
+                                            <option value="3">Food</option>
+                                            <option value="4">Other</option>
+                                        </select><br>
+                                        Descibe your request:
+                                        <textarea name="description" cols="100" rows="5" plcaeholder="text"></textarea>
+                                        <br>
+                                        <input type="submit" value="Submit Request"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -248,7 +277,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; RomanEmp<sup>MIM</sup> 2020</span>
                     </div>
                 </div>
             </footer>

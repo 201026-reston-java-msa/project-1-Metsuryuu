@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("problem", null);
 			
 			if(user.getRole().getRoleId()==1) {
-				response.sendRedirect("employee-dash.html");
+				response.sendRedirect("employeeDash");
 			}else if(user.getRole().getRoleId()==2){
 				response.sendRedirect("manager.html");
 			}
