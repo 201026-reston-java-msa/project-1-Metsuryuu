@@ -7,8 +7,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.model.Users;
+import com.revature.utilities.Hasher;
 import com.revature.utilities.HibernateUtil;
 
 public class UserDao {
@@ -53,14 +55,16 @@ public class UserDao {
 		return userList;
 	}
 	
-	//Login method. Get the user by their username, then compare password hashes.
-	public Users login(String username, String password) {
+	//Login method. Get the user by their username, then compare passwords.
+	public Users login(Users user, String password) {
 		
 		Session session = HibernateUtil.getSession();
-		Users user = session.get(Users.class, username);
+//		Users user = session.get(Users.class, username);
 		
-		//compare the password hashes, they should be equal.
-		if(user.getPassword().equals(password)) {
+		user = session.createQuery("from Users where username='"+user.getUsername()+"'", Users.class).getSingleResult();
+		
+		//compare the password in plaintext, they should be equal.
+		if(BCrypt.checkpw(password, user.getPassword())) {
 			return user;
 		}else {
 			//If they aren't equal, either the username or password was incorrect.

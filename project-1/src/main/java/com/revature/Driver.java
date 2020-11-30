@@ -44,6 +44,12 @@ public class Driver {
 			System.out.println("\n"+r.toString()+"\n");
 		}
 		
+//		if(ud.login("test1", "1test")) {
+//			System.out.println("Works");
+//		}else {
+//			System.out.println("didn't work");
+//		}
+		
 	}
 
 	private static void initialValues() {
