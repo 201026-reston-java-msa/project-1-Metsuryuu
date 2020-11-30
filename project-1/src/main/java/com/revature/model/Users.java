@@ -21,16 +21,16 @@ public class Users {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int userId;
 	
-	@Column(name="username", unique=true, nullable=false)
+	@Column(name="username", unique=true)
 	private String username;
 	
-	@Column(name="password_hash", nullable=false)
+	@Column(name="password_hash")
 	private String password;
 	
-	@Column(name="first_name", nullable=false)
+	@Column(name="first_name")
 	private String firstName;
 	
-	@Column(name="last_name", nullable=false)
+	@Column(name="last_name")
 	private String lastName;
 	
 	@Column(name="email", unique=true)

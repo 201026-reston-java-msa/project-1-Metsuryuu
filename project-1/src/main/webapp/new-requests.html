@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="CSS/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -232,7 +232,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800">Submit a New Request</h1>
-                    <p class="mb-4">Please fill out the form below and click <a href="">Submit</a>
+                    <p class="mb-4">Please fill out the form below and click <a href="">Submit Request</a>
                                     to send the form.</p>
 
                     <!-- Content Row -->
@@ -259,13 +259,14 @@
                                             <option value="4">Other</option>
                                         </select><br>
                                         Descibe your request:
-                                        <textarea name="description" cols="100" rows="5" plcaeholder="text"></textarea>
+                                        <textarea name="description" cols="100" rows="5" maxlength="250"></textarea>
                                         <br>
-                                        <input type="submit" value="Submit Request"/>
+                                        <input type="submit" class="btn-primary" value="Submit Request"/>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                 <!-- /.container-fluid -->

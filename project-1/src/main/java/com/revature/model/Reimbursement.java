@@ -39,7 +39,7 @@ public class Reimbursement {
 	private Users author;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="User_FK_Resolver")
+	@JoinColumn(name="User_FK_Resolver", referencedColumnName="user_id")
 	private Users resolver;	//I believe these are who makes and approves the request.
 
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -58,8 +58,8 @@ public class Reimbursement {
 			Users resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.amount = amount;
-		setSubmitted(submitted);
-		setResolved(resolved);
+		setSubmitted();
+		setResolved();
 		this.description = description;
 		this.author = author;
 		this.resolver = resolver;
@@ -73,8 +73,8 @@ public class Reimbursement {
 		super();
 		this.reimbursmentId = reimbursmentId;
 		this.amount = amount;
-		setSubmitted(submitted);
-		setResolved(resolved);
+		setSubmitted();
+		setResolved();
 		this.description = description;
 		this.author = author;
 		this.resolver = resolver;
@@ -86,7 +86,7 @@ public class Reimbursement {
 			ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.amount = amount;
-		setSubmitted(submitted);
+		setSubmitted();
 		this.description = description;
 		this.author = author;
 		this.status = status;
@@ -113,22 +113,21 @@ public class Reimbursement {
 		return submitted;
 	}
 
-	public void setSubmitted(String submitted) {
-		if(submitted == null) {
-			this.submitted = null;
-		}
-		this.submitted = Timestamp.valueOf(submitted);
+	public void setSubmitted() {
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		this.submitted = time;
 	}
 
 	public Timestamp getResolved() {
 		return resolved;
 	}
 
-	public void setResolved(String resolved) {
-		if(resolved == null) {
-			this.resolved = null;
-		}
-		this.resolved = Timestamp.valueOf(resolved);
+	public void setResolved() {
+//		if(resolved == null) {
+//			this.resolved = null;
+//		}
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		this.resolved = time;
 	}
 
 	public String getDescription() {
