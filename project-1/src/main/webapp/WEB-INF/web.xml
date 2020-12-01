@@ -34,4 +34,14 @@
     <servlet-name>RequestServlet</servlet-name>
     <url-pattern>/requestServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>getRequestsServlet</display-name>
+    <servlet-name>getRequestsServlet</servlet-name>
+    <servlet-class>com.revature.servlets.getRequestsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getRequestsServlet</servlet-name>
+    <url-pattern>/getRequests</url-pattern>
+  </servlet-mapping>
 </web-app>

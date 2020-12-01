@@ -243,7 +243,11 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Pending Requests</h6>
                                 </div>
                                 <div class="card-body">
-                                    <!--Insert a table here-->
+                                    <div class="table-responsive">
+                                        <table id="pending" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <!--JS will insert the table here.-->
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
 
@@ -255,7 +259,11 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Approved Requests</h6>
                                 </div>
                                 <div class="card-body">
-                                    <!--Insert a table here-->
+                                    <div class="table-responsive">
+                                        <table id="approved" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <!--JS will insert the table here.-->
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +274,11 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Denied Requests</h6>
                                 </div>
                                 <div class="card-body">
-                                    <!--Insert a table here-->
+                                    <div class="table-responsive">
+                                        <table id="Denied" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <!--JS will insert the table here.-->
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -329,6 +341,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Get all requests Javascript -->
+    <script src="JS/get-requests.js"></script>
 
 </body>
 
