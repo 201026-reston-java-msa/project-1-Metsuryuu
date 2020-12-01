@@ -25,13 +25,13 @@ fetch('http://localhost:8080/project-1/getRequests', {
 .then(json => {
     let li = `<tr><th>Amount</th><th>Submitted</th><th>Description</th></tr>`;
 
-    json.array.forEach(user => {
+    json.array.forEach(pending => {
         //This is the idea, obviously change your variable names.
-        li += <tr>
-            <td>${user.amount}</td>
-            <td>${user.submitted}</td>
-            <td>${user.description}</td>
-        </tr>
+        li += `<tr>
+            <td>${pending.amount}</td>
+            <td>${pending.submitted}</td>
+            <td>${pending.description}</td>
+        </tr>`;
     });
 
     //Display to the screen.

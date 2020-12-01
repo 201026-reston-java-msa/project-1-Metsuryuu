@@ -24,7 +24,7 @@ public class getRequestsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO get the parameters from the JS POST using request (it's the same way as always, use the name of the keyvalue pair.
 	}
 
 }
