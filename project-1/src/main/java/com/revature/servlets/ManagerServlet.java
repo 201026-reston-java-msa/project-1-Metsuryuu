@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,19 +17,22 @@ import com.revature.model.dto.ReimbursementDTO;
 import com.revature.service.ReimbursementService;
 
 /**
- * Servlet implementation class getRequestsServlet
+ * Servlet implementation class ManagerServlet
  */
-public class getRequestsServlet extends HttpServlet {
+public class ManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public getRequestsServlet() {
+    public ManagerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
@@ -38,32 +40,24 @@ public class getRequestsServlet extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 		
 		ReimbursementService rs = new ReimbursementService();
-		List<Reimbursement> reimList = new ArrayList<>();
-		int user_id = Integer.parseInt(session.getAttribute("user_id").toString());
 		
-		reimList = rs.getAll(1, user_id);
-		
-		//not good practice, should be in the service layer.
 		List<ReimbursementDTO> reim = new ArrayList<>();
+		reim = rs.getAllManager(1);
 		
-		for(Reimbursement r: reimList) {
-			ReimbursementDTO rdto = new ReimbursementDTO();
-			
-			rdto.setAmount(r.getAmount());
-			rdto.setAuthor_id(r.getAuthor().getUserId());
-			rdto.setDescription(r.getDescription());
-			rdto.setResolved(r.getResolved());
-			rdto.setResolver_id(r.getAuthor().getUserId());
-			rdto.setSubmitted(r.getSubmitted());
-			
-			reim.add(rdto);
-		}
 		
 		try(PrintWriter out = response.getWriter()){
 			String json = new Gson().toJson(reim);
 			out.print(json);
 			out.flush();
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.hibernate.HibernateException;
 import com.revature.dao.ReimbursementDao;
 import com.revature.model.Reimbursement;
 import com.revature.model.ReimbursementStatus;
+import com.revature.model.dto.ReimbursementDTO;
 
 public class ReimbursementService {
 	
@@ -39,6 +40,29 @@ public class ReimbursementService {
 		reimList = rd.selectRequests(status_id, user_id);
 		
 		return reimList; 
+	}
+	
+	public List<ReimbursementDTO> getAllManager(int status_id){
+		
+		List<Reimbursement> reimList = new ArrayList<>();
+		List<ReimbursementDTO> reim = new ArrayList<>();
+		
+		reimList = rd.getAllRequests(status_id);
+		
+		for(Reimbursement r: reimList) {
+			ReimbursementDTO rdto = new ReimbursementDTO();
+			
+			rdto.setAmount(r.getAmount());
+			rdto.setAuthor_id(r.getAuthor().getUserId());
+			rdto.setDescription(r.getDescription());
+			rdto.setResolved(r.getResolved());
+			rdto.setResolver_id(r.getAuthor().getUserId());
+			rdto.setSubmitted(r.getSubmitted());
+			
+			reim.add(rdto);
+		}
+		
+		return reim;
 	}
 
 }
