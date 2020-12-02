@@ -1,5 +1,8 @@
 package com.revature.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
@@ -27,6 +30,15 @@ public class ReimbursementService {
 			//return false with failure.
 			return false;
 		}
+	}
+	
+	public List<Reimbursement> getAll(int status_id, int user_id){
+		
+		List<Reimbursement> reimList = new ArrayList<>();
+		
+		reimList = rd.selectRequests(status_id, user_id);
+		
+		return reimList; 
 	}
 
 }

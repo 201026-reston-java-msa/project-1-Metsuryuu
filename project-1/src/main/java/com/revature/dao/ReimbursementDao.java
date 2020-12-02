@@ -47,7 +47,7 @@ public class ReimbursementDao {
 		
 	}
 	
-	//Get requests by their status and user. Meant for employees.
+	//Get requests by their status and user. Meant for employees or by employee search.
 	public List<Reimbursement> selectRequests(int status_id, int id){
 		
 		Session session = HibernateUtil.getSession();

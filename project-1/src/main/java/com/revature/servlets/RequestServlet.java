@@ -53,23 +53,23 @@ public class RequestServlet extends HttpServlet {
 		reim.setDescription(request.getParameter("description"));
 		reim.setSubmitted();
 		
-		user.setUserId(Integer.parseInt(session.getAttribute("user_id").toString()));	//This might not work.
+		user.setUserId(Integer.parseInt(session.getAttribute("user_id").toString()));
 		reim.setAuthor(user);
 		
 		type.setTypeId(Integer.parseInt(request.getParameter("type")));
 		switch(type.getTypeId()) {
-		case 1:
-			type.setTypeName("Lodging");
-			break;
-		case 2:
-			type.setTypeName("Travel");
-			break;
-		case 3:
-			type.setTypeName("Food");
-			break;
-		case 4:
-			type.setTypeName("Other");
-			break;
+			case 1:
+				type.setTypeName("Lodging");
+				break;
+			case 2:
+				type.setTypeName("Travel");
+				break;
+			case 3:
+				type.setTypeName("Food");
+				break;
+			case 4:
+				type.setTypeName("Other");
+				break;
 		}
 		reim.setType(type);
 		
